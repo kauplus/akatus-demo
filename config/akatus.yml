@@ -1,0 +1,6 @@
+development:
+  sandbox: true
+test:
+  sandbox: true
+production:
+  sandbox: false

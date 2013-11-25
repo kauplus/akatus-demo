@@ -1,0 +1,42 @@
+<%= form_tag Akatus.configuracao.url_carrinho, target: '_blank' do %>
+
+  <!-- Campos obrigatórios com detalhes da transação -->
+  <%= hidden_field_tag 'email_cobranca', 'barbolo@gmail.com' %> <!-- Email da loja cadastrado na Akatus -->
+  <%= hidden_field_tag 'tipo', 'CP' %> <!-- Este campo indica que o carrinho é gerenciado pela loja -->
+  <%= hidden_field_tag 'moeda', 'BRL' %> <!-- A moeda em que a transação será feita -->
+
+  <!-- Primeiro item (obrigatório) -->
+  <%= hidden_field_tag 'item_id_1', 'MEUID212' %> <!-- identificador único do item (numérico ou texto) -->
+  <%= hidden_field_tag 'item_descr_1', 'Super camiseta do Kauplus' %> <!-- descrição do item -->
+  <%= hidden_field_tag 'item_quant_1', '3' %> <!-- "Me vê 3 dessas, por favor!" -->
+  <%= hidden_field_tag 'item_valor_1', Akatus.formatar_numero(39.99) %> <!-- "O quê? Só R$ 39,99? Que barato!" -->
+
+  <!-- Segundo item (repita para os N itens que desejar adicionar) -->
+  <%= hidden_field_tag 'item_id_2', '59' %>
+  <%= hidden_field_tag 'item_descr_2', 'Chapéu branco' %>
+  <%= hidden_field_tag 'item_quant_2', '1' %>
+  <%= hidden_field_tag 'item_valor_2', Akatus.formatar_numero(25.00) %>
+
+  <!-- Comprador (opcional, mas útil para que o cliente não digite novamente todos os dados no carrinho da Akatus) -->
+  <%= hidden_field_tag 'cliente_nome', 'Johny English' %>
+  <%= hidden_field_tag 'cliente_cep', '01311300' %>
+  <%= hidden_field_tag 'cliente_end', 'Av. Paulista' %>
+  <%= hidden_field_tag 'cliente_num', '2000' %>
+  <%= hidden_field_tag 'cliente_compl', 'Sala 10' %>
+  <%= hidden_field_tag 'cliente_bairro', 'Bela Vista' %>
+  <%= hidden_field_tag 'cliente_cidade', 'São Paulo' %>
+  <%= hidden_field_tag 'cliente_uf', 'SP' %>
+  <%= hidden_field_tag 'cliente_pais', 'BRA' %>
+  <%= hidden_field_tag 'cliente_ddd', '11' %>
+  <%= hidden_field_tag 'cliente_tel', '912345678' %>
+  <%= hidden_field_tag 'cliente_email', 'email@cliente.com.br' %>
+
+  <!-- Frete (Sim, é uma "gambiarra") -->
+  <%= hidden_field_tag 'item_frete_1', Akatus.formatar_numero(11.90) %>
+
+  <!-- Desconto (deve ser um número negativo!) -->
+  <%= hidden_field_tag 'extras', Akatus.formatar_numero(-10.00) %>
+
+  <%= submit_tag 'Clique aqui para testar o pagamento via formulário web com a Akatus' %>
+
+<% end %>

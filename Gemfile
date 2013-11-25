@@ -42,4 +42,7 @@ end
 # gem 'capistrano', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development, :test]
+
+# The super Akatus gem
+gem "akatus", "~> 0.1.0"
