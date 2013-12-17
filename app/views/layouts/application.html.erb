@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AkatusDemo</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <title>Akatus Demo</title>
+  <%= stylesheet_link_tag    "application", media: "all"  %>
+  <%= javascript_include_tag "application", "vendor/modernizr" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-<body>
+<body class="<%= controller_name %> <%= action_name %>">
 
-<%= yield %>
+  <!-- Nav Bar -->
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="nav-bar right">
+        <ul class="button-group">
+          <li><%= link_to 'API', api_path, class: 'button' %></li>
+          <li><%= link_to 'HTML (Formulário)', form_path, class: 'button' %></li>
+          <li><%= link_to 'JavaScript', javascript_path, class: 'button' %></li>
+        </ul>
+      </div>
+      <%= link_to root_path do %>
+        <h1>Akatus <small>demo</small></h1>
+      <% end %>
+      <hr />
+    </div>
+  </div>
+
+  <!-- End Nav -->
+
+  <div class="row">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

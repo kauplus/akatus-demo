@@ -1,6 +1,22 @@
+#
+# Configuration for the akatus gem.
+# Don't forget to change the template below with your own information!
+#
+# For more details on how to get an API key, see:
+#  https://connect.akatus.com/tutoriais/o-que-e-api-key/
+#
+
 development:
   sandbox: true
+  api_key: INVALID-API-KEY
+  email:   INVALID-EMAIL
+
 test:
   sandbox: true
+  api_key: INVALID-API-KEY
+  email:   INVALID-EMAIL
+
 production:
   sandbox: false
+  api_key: INVALID-API-KEY
+  email:   INVALID-EMAIL

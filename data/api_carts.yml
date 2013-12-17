@@ -1,0 +1,25 @@
+carts:
+  cart1: !ruby/object:Akatus::Payment
+    items:
+    - !ruby/object:Akatus::Item
+      shipping_cost: 0
+      discount: 0
+      weight: 0
+      quantity: 3
+      reference: P0001
+      description: Super caneta do Kauplus
+      price: '10.1'
+    - !ruby/object:Akatus::Item
+      shipping_cost: 0
+      discount: 0
+      weight: 0
+      quantity: 5
+      reference: 2999
+      description: Super camiseta do Kauplus
+      price: '138.25'
+    discount: '7.2'
+    shipping_cost: '99.99'
+    weight: 0
+    receiver: !ruby/object:Akatus::Receiver
+      email: debora.setton@kauplus.com.br
+      api_key: 72FB3FB5-9805-47F8-B350-FD09821D6061

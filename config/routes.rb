@@ -1,12 +1,17 @@
 AkatusDemo::Application.routes.draw do
 
-  get 'pagar-com-formulario' => 'checkout#pagar_com_formulario'
+  get  'api'        => 'checkout#api',        :as => :api
+  post 'api/pay'    => 'checkout#api_pay',    :as => :api_pay
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  get 'formulario' => 'checkout#form',       :as => :form
+  get 'javascript' => 'checkout#javascript', :as => :javascript
+
+  post 'api/pay/boleto'      => 'api_checkout#pay_with_boleto',      :as => :api_pay_with_boleto
+  post 'api/pay/eft'         => 'api_checkout#pay_with_eft',         :as => :api_pay_with_eft
+  post 'api/pay/credit_card' => 'api_checkout#pay_with_credit_card', :as => :api_pay_with_credit_card
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

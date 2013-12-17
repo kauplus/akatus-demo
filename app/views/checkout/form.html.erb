@@ -1,0 +1,52 @@
+<div class="large-12 columns">
+
+  <%= button_tag 'Mostrar formulário', id: 'show-form-fields-btn' %>
+
+  <%= form_tag Akatus::Services::Transaction.form_url, target: '_blank', id: 'akatus-form' do %>
+
+    <!-- Campos obrigatórios com detalhes da transação -->
+    <!-- Email conta Akatus que receberá o valor da transação -->
+    <%= hidden_field_tag 'email_cobranca', Akatus.config.email %>
+    <!-- Este campo indica que o carrinho é gerenciado pela loja -->
+    <%= hidden_field_tag 'tipo', 'CP' %>
+    <!-- A moeda em que a transação será feita. Atualmente, o único valor aceito é BRL -->
+    <%= hidden_field_tag 'moeda', 'BRL' %>
+
+    <!-- Produtos do carrinho (é obrigatório haver pelo menos um produto) -->
+    <% @cart.each_with_index do |item, idx| %>
+      <!-- Identificador único do item (numérico ou texto) -->
+      <%= hidden_field_tag "item_id_#{idx + 1}", item[:id] %>
+      <!-- Descrição do item -->
+      <%= hidden_field_tag "item_descr_#{idx + 1}", item[:title] %>
+      <!-- "Me vê 3 dessas, por favor!" -->
+      <%= hidden_field_tag "item_quant_#{idx + 1}", item[:quantity] %>
+      <!-- "O quê? Só R$ 39,99? Que barato!" -->
+      <%= hidden_field_tag "item_valor_#{idx + 1}", Akatus.format_number(item[:price]) %>
+    <% end %>
+
+    <!-- Comprador (opcional, mas útil para que o cliente não digite novamente todos os dados no carrinho da Akatus) -->
+    <%= hidden_field_tag 'cliente_nome', 'Johny English' %>
+    <%= hidden_field_tag 'cliente_cep', '01311300' %>
+    <%= hidden_field_tag 'cliente_end', 'Av. Paulista' %>
+    <%= hidden_field_tag 'cliente_num', '2000' %>
+    <%= hidden_field_tag 'cliente_compl', 'Sala 10' %>
+    <%= hidden_field_tag 'cliente_bairro', 'Bela Vista' %>
+    <%= hidden_field_tag 'cliente_cidade', 'São Paulo' %>
+    <%= hidden_field_tag 'cliente_uf', 'SP' %>
+    <%= hidden_field_tag 'cliente_pais', 'BRA' %>
+    <%= hidden_field_tag 'cliente_ddd', '11' %>
+    <%= hidden_field_tag 'cliente_tel', '912345678' %>
+    <%= hidden_field_tag 'cliente_email', 'email@cliente.com.br' %>
+
+    <!-- Frete (sim, é uma "gambiarra", porque o frete deve ser especificado por produto, e não por carrinho) -->
+    <!-- Cuidado: esse valor será multiplicado pela quantidade de items! -->
+    <%= hidden_field_tag 'item_frete_1', Akatus.format_number(11.90) %>
+
+    <!-- Desconto (deve ser um número negativo!) -->
+    <%= hidden_field_tag 'extras', Akatus.format_number(-10.00) %>
+
+    <%= submit_tag 'Clique aqui para testar o pagamento via formulário web com a Akatus', class: 'button' %>
+
+  <% end %>
+
+</div>

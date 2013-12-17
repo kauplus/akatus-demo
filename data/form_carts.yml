@@ -1,0 +1,10 @@
+carts:
+  default:
+  - id: P0001
+    title: Super caneta do Kauplus
+    price: 10.1
+    quantity: 3
+  - id: 2999
+    title: Super camiseta do Kauplus
+    price: 138.25
+    quantity: 5

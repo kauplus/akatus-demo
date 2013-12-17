@@ -1,0 +1,20 @@
+payers:
+  payer1: !ruby/object:Akatus::Payer
+    name: José Maria Vidal
+    email: jose@jose.com
+    addresses:
+    - !ruby/object:Akatus::Address
+      type: entrega
+      street: Rua Labib Marrar
+      number: '129'
+      neighborhood: Jardim Santa Cruz
+      city: São Paulo
+      state: SP
+      country: BRA
+      postal_code: 04182040
+      additional_details: Apto. 33
+      reference: Perto da padaria do Seu Zé
+    phones:
+    - !ruby/object:Akatus::Phone
+      type: comercial
+      number: '1199999999'
