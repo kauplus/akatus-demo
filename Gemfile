@@ -48,7 +48,6 @@ end
 gem 'debugger', group: [:development, :test]
 
 # The super Akatus gem
-gem 'akatus', '~> 1.0.0'
 gem 'akatus-rails', '~> 1.0.0'
 
 group :development do

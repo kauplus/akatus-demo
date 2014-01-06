@@ -1,29 +1,38 @@
-akatus-demo
-===========
+# akatus-demo
 
-Este é um demo de integração da Akatus com Rails
+Este é exemplo de integração entre uma aplicação Rails de e-commerce e o meio de pagamento [Akatus][1].
 
-Documentação INTEGRAÇÃO + RÁPIDA (para ver todos os campos)
-- https://dev.akatus.com/docs/manual_integracao_rapida.pdf
+A aplicação usa a gem [`akatus-rails`][2].
 
-Documentação NIP
-- https://dev.akatus.com/docs/manual_integracao_NIP_e_retorno_automatico_de_dados.pdf
-- Configurar notificação: https://dev.akatus.com/painel/cart/notifications
-- Usar um túnel local: http://progrium.com/localtunnel/
+## Como rodar a aplicação
 
-gem install localtunnel
+Copie o código da aplicação para o seu computador:
 
-rails s
+    $ git clone git@github.com:kauplus/akatus-demo.git
 
-localtunnel -k ~/.ssh/id_rsa.pub 3000
+Instale as dependências:
+
+```
+$ cd akatus-demo
+$ bundle install
+```
+
+Altere o arquivo `config/akatus.yml` para inserir as credenciais (email e API key) da sua conta Akatus.
+
+Inicie o servidor:
+
+    $ bundle exec rails server
+
+Acesse a aplicação no seu navegador pelo endereço `http://localhost:3000`.
+
+## Como contribuir
+
+1. Crie um fork da gem
+2. Crie uma feature branch (`git checkout -b my-new-feature`)
+3. Faça um commit das suas alterações (`git commit -am 'Add some feature'`)
+4. Envie para o GitHub (`git push origin my-new-feature`)
+5. Crie um novo pull request
 
 
-
-What you have to know about the store (the receiver of the payment):
-- email_cobranca
-
-
-Tips:
-- work with decimal numbers, not with floats
-
-
+  [1]: https://site.akatus.com/
+  [2]: https://github.com/kauplus/akatus-rails
